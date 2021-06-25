@@ -542,6 +542,15 @@ export class Console extends Runner {
         //Only needed for katacoda, wiki runner and the assertions
         return result;
     }
+     
+  /// runassertFile
+
+    runAssertExistFile(runCommand: RunCommand): RunResult{
+		let result = new RunResult();
+	    result.returnCode = 0;
+	     return result;
+	
+     }
 
 
     async assertInstallDevonfwIde(runCommand: RunCommand, result: RunResult) {
@@ -901,6 +910,20 @@ export class Console extends Runner {
             throw error;
         }
     }
+
+   
+      async assertAssertFileExist(runCommand: RunCommand, result: RunResult) {
+        try {
+            new Assertions()
+            .noErrorCode(result)
+            .noException(result)
+            .fileExits(path.join(this.getVariable(this.WORKSPACE_DIRECTORY), runCommand.command.parameters[0]));
+        } catch(error) {
+            await this.cleanUp();
+            throw error;
+        }
+    }
+
 
 
     private lookup(obj, lookupkey) {
