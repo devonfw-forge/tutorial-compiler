@@ -1,0 +1,33 @@
+<%if(title){%>== <%- title; %>
+<%if(text){%><%- text; %><%}%><%}else{%>
+
+=== Execute a command
+<%if(text){%><%- text; %><%}%>
+
+==== Execute a command in a command prompt
+First, you need to open a command prompt in your current Workspace. For Windows, you can use Powershell and on Linux, you can use the Terminal.
+<% if(async){ %>The command wil start a server so that you have to open a new command prompt, that will be blocked while the server is running. <% } %>
+Your current working folder should be *<startingFolder><% if(currentdir){ %>/<%= currentdir; %><%}%>*.
+<% if(dir){ %> 
+The command will be executed in the folder *<startingFolder><% if(currentdir){ %>/<%= currentdir; %><% } %>/<%= dir; %>*. If the folders are not present, you maybe missed a wiki chapter or you have to create them and change your directory.<%}%>
+
+.Operating system
+. Windows + 
+Then execute the command `<%- windowsCommand; %><% if(args){ %> <%- args; %><%}%>`.
+. Linux and macOS + 
+Then execute the command `<%- linuxCommand; %><% if(args){ %> <%- args; %><%}%>`.
+
+<% if(port){ %>
+
+==== Startup Assertion
+
+You can check if the server is running correctly by checking if `localhost:<%= port; %>/<%= appPath; %>` is accessible by either using a tool like `curl`, `Postman` or simply accessing the service via your webbrowser.
+
+Example: `curl -Is localhost:<%= port; %>/<%= appPath; %> | head -n 1`
+
+This command should return an `200 OK` header if the service is available.
+
+<% } %>
+
+<%if(textAfter){%><%- textAfter; %><%}%>
+

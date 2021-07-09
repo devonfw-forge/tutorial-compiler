@@ -18,7 +18,7 @@ This command will start the Java server.
 
 You can check if the server is running correctly by checking if `localhost:<%= port; %>/<%= app_path; %>` is accessible by either using a tool like `curl`, `Postman` or simply accessing the service via your webbrowser.
 
-Example: `curl -Is localhost:<%= port; %>/<%app_path%> | head -n 1`
+Example: `curl -Is localhost:<%= port; %>/<%= app_path; %> | head -n 1`
 
 This command should return an `200 OK` header if the service is available.
 

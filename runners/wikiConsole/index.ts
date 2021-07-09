@@ -176,5 +176,35 @@ export class WikiConsole extends WikiRunner {
       
         return null;
     }
+
+    runExecuteCommand(runCommand: RunCommand): RunResult{
+        let text = this.checkForText(runCommand);
+        let title = this.checkForTitle(runCommand);
+        let textAfter = this.checkForTextAfter(runCommand);
+        let currentdir = path.relative(this.getWorkingDirectory(), this.getVariable(this.WORKSPACE_DIRECTORY));
+        let windowsCommand = runCommand.command.parameters[0];
+        let linuxCommand = runCommand.command.parameters[1];
+        let dir = (runCommand.command.parameters.length > 2 && runCommand.command.parameters[2].dir) 
+            ? runCommand.command.parameters[2].dir
+            : undefined;
+        let async = (runCommand.command.parameters.length > 2 && runCommand.command.parameters[2].async)
+            ? runCommand.command.parameters[2].async
+            : false;
+        let args = (runCommand.command.parameters.length > 2 && runCommand.command.parameters[2].args) 
+            ? runCommand.command.parameters[2].args.join(" ")
+            : undefined;
+        let port = (runCommand.command.parameters.length > 3 && runCommand.command.parameters[3].port) 
+            ? runCommand.command.parameters[3].port
+            : undefined;
+        let appPath = (runCommand.command.parameters.length > 3 && runCommand.command.parameters[3].path) 
+            ? runCommand.command.parameters[3].path
+            : undefined; 
+
+        this.renderWiki(path.join(this.getRunnerDirectory(), "templates", "executeCommand.asciidoc"),
+            {windowsCommand: windowsCommand, linuxCommand: linuxCommand, dir: dir, async: async, args: args,
+                 port: port, appPath: appPath, currentdir: currentdir, title: title, text: text, textAfter: textAfter});
+        
+        return null;
+    }
 }
 
