@@ -1,0 +1,17 @@
+== Create devon4ng project
+
+=== Prerequisites
+
+* The `angular-cli`, namely the `ng` command has to be available either by using the provided package from devonfw IDE or by installing it via the NPM package manager.
+
+<% if (cdCommand) { %>
+
+As the project should be created at `<%= cdCommand; %>`, make sure that this directory exists before proceeding with the next step. 
+
+<% } %>
+
+=== Creating the Angular project
+
+Use the `ng` command to create the project <%= projectName; %>:
+
+`devon ng create <%= projectName; %><% if(ngParams){ %><%= ngParams; %><% } %>`
