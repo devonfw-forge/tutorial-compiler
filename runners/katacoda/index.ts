@@ -9,6 +9,7 @@ import { DirUtils } from "./dirUtils";
 import * as path from 'path';
 import * as ejs from 'ejs';
 import * as fs from 'fs';
+import { Converter } from "../../engine/converter";
 import { Assertions } from "../../assertions";
 
 export class Katacoda extends Runner {
@@ -25,6 +26,7 @@ export class Katacoda extends Runner {
     private terminalCounter: number = 1;
     private showVsCodeIde: boolean = false;
     private terminals: KatacodaTerminals[] = [{function: "default", terminalId: 1}];
+    private converter: Converter;
  
     init(playbook: Playbook): void {
         // create directory for katacoda tutorials if not exist
@@ -49,6 +51,8 @@ export class Katacoda extends Runner {
         //set working direktory
         this.setVariable(this.WORKSPACE_DIRECTORY, path.join("/root"));
 
+        this.converter = new Converter();
+
         this.assetManager = new KatacodaAssetManager(path.join(this.outputPathTutorial, "assets"));
         
         playbook.steps.forEach(step => {
@@ -62,8 +66,8 @@ export class Katacoda extends Runner {
 
     async destroy(playbook: Playbook): Promise<void> {
         let tutorialDirectoryName = path.basename(playbook.path);
-        this.renderTemplate("intro.md", path.join(this.outputPathTutorial, "intro.md"), { description: playbook.description, tutorialPath: tutorialDirectoryName });
-        fs.writeFileSync(this.outputPathTutorial + 'finish.md', playbook.conclusion);
+        this.renderTemplate("intro.md", path.join(this.outputPathTutorial, "intro.md"), { description: this.converter.convertAsciidocToMarkdown(playbook.description), tutorialPath: tutorialDirectoryName });
+        fs.writeFileSync(this.outputPathTutorial + 'finish.md', this.converter.convertAsciidocToMarkdown(playbook.conclusion));
 
         // create and configure required files for the setup process
         this.renderTemplate(path.join("scripts", "intro_foreground.sh"), path.join(this.outputPathTutorial, "intro_foreground.sh"), { });
@@ -461,6 +465,13 @@ export class Katacoda extends Runner {
     }
 
     private renderTemplate(name: string, targetPath: string, variables) {
+        if("text" in variables) {
+            variables["text"] = this.converter.convertAsciidocToMarkdown(variables["text"]);
+        }
+        if("textAfter" in variables) {
+            variables["textAfter"] = this.converter.convertAsciidocToMarkdown(variables["textAfter"]);
+        }
+        
         let template = fs.readFileSync(path.join(this.getRunnerDirectory(),"templates", name), 'utf8');
         let result = ejs.render(template, variables);
         fs.writeFileSync(targetPath, result, {flag: "a"});
