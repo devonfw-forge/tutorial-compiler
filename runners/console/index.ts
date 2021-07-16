@@ -954,14 +954,15 @@ export class Console extends Runner {
                             }
                         }
                     }
-                }      
-            for(let proc of systemProcesses){
-                if(path.normalize(proc.path).includes(path.normalize(this.getWorkingDirectory()))){
-                    try {
-                        process.kill(proc.pid);
-                    } catch(e) {
-                        console.error("Error killing process "+proc.name+" with id: " + proc.pid , e);
-                    }
+                }
+        }
+        systemProcesses = await snapshot("name", "pid", "ppid", "path");      
+        for(let proc of systemProcesses){
+            if(path.normalize(proc.path).includes(path.normalize(this.getWorkingDirectory()))){
+                try {
+                    process.kill(proc.pid);
+                } catch(e) {
+                    console.error("Error killing process "+proc.name+" with id: " + proc.pid , e);
                 }
             }
         }

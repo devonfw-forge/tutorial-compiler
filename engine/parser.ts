@@ -86,7 +86,7 @@ export class Parser {
         let result = description;
         let offset = 0;
         for(let i = 0; i < description.length-1; i++){
-            if(description[i] == '#' && description[i+1] == '#'){
+            if(description[i] == '#' && description[i+1] == '#' && description[i+2] == '#'){
                 let temp = result.slice(0,i+offset);
                 result = temp +"\n"+result.slice(i+offset);
                 offset++;

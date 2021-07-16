@@ -1,8 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
-=== Generate CobiGen templates 
-<%if(text){%><%- text; %><%}%>
+<% if(title){ %>== <%= title;%> 
+=== Generate CobiGen templates
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Generate CobiGen templates
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Generate CobiGen templates
+<%if(text){%><%- text; %><%}%> <%}%>
 
 How to use CobiGen, to generate templates for the following code generation.
 More information about CobiGen on https://devonfw.com/website/pages/docs/master-cobigen.asciidoc.html.

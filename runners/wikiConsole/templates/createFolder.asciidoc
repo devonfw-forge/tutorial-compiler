@@ -1,5 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Create folder
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Create folder
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Create folder
+<%if(text){%><%- text; %><%}%> <%}%>
 
 === Create folder
 <%if(text){%><%- text; %><%}%><%}%>

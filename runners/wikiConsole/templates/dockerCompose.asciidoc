@@ -1,9 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === Docker Compose
-<%if(text){%><%- text; %><%}%><%}%>
-
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Docker Compose
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Docker Compose
+<%if(text){%><%- text; %><%}%> <%}%>
 
 ==== Prerequisites
 

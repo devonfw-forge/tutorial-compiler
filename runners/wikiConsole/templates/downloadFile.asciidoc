@@ -1,8 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === Download a file
-<%if(text){%><%- text; %><%}%><%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Download a file
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Download a file
+<%if(text){%><%- text; %><%}%> <%}%>
+
 
 ==== Prerequisites
 * Existing folder you want to load the file. (If the folder doesn't exist you can create it from terminal.)

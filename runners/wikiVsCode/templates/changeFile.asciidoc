@@ -1,9 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%>
+<% if(title){ %>== <%= title;%> 
+=== Changing of the <%= fileName; %> file
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Changing of the <%= fileName; %> file
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Changing of the <%= fileName; %> file
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Changing of the <%= fileName; %> File
-
-<%if(text){%><%- text; %><%}%><%}%>
 
 ==== Prerequisites
 * VS Code Editor (can be installed in your devonfw environment).

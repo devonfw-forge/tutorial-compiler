@@ -1,8 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === Clone Repository
-<%if(text){%><%- text; %><%}%><%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Clone Repository
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Clone Repository
+<%if(text){%><%- text; %><%}%> <%}%>
 
 ==== Prerequisites
 * You need to have Git installed. You can download Git https://git-scm.com/downloads[here] for your OS and install it by following the instructions.

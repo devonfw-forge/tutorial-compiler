@@ -1,8 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Create a new devon4j project from command promt
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Create a new devon4j project from command promt
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Create a new devon4j project from command promt
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Create a new devon4j project from command prompt
-<%if(text){%><%- text; %><%}%><%}%>
 ==== Prerequisites
 
 In order to create a new application you must use the archetype provided by devon4j which uses the https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[maven archetype functionality].

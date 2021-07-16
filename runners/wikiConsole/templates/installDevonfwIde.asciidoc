@@ -1,9 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === devonfw setup
-
-<%if(text){%><%- text; %><%}%><%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== devonfw setup
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== devonfw setup
+<%if(text){%><%- text; %><%}%> <%}%>
 
 If you already installed the devonfw IDE, you can skip this step.
 

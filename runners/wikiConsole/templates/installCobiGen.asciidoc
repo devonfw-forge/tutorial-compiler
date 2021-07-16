@@ -1,8 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Install CobiGen
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Install CobiGen
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Install CobiGen
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Install GobiGen
-<%if(text){%><%- text; %><%}%><%}%>
 Installing devonfw code generator (i.e. CobiGen).
 
 ==== Prerequisites
@@ -17,4 +20,4 @@ To update the environment, you have to execute `devon` and you have successfully
 
 Some further information about the usage of CobiGen can be found https://devonfw.com/website/pages/docs/master-cobigen.asciidoc.html[here]. 
 
-<%if(textAfter){%>== <%- textAfter; %>
+<%if(textAfter){%>== <%- textAfter; %> <%}%>

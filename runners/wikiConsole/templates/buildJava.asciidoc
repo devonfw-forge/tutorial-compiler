@@ -1,8 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
-=== Build the Java Project with Maven
-<%if(text){%><%- text; %><%}%><%}%>
+<% if(title){ %>== <%= title;%> 
+=== Build the Java project with Maven
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Build the Java project with Maven
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Build the Java project with Maven
+<%if(text){%><%- text; %><%}%> <%}%>
 
 ==== Prerequisites
 

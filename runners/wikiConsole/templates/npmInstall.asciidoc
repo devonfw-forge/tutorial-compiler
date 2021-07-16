@@ -1,13 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
-<% if(npmCommand.name){ %>
-=== Installation of package <%= npmCommand.name; %>
-<%if(text){%><%- text; %><%}%><%}%>
-<% } else {%>
-=== Install dependencies
-<%if(text){%><%- text; %><%}%><%}%>
-<% } %>
+<% if(title){ %>== <%= title;%> 
+<% if(npmCommand.name){ %>=== Installation of package <%= npmCommand.name; %><%}else{%>=== Install dependencies<%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%><% if(npmCommand.name){ %>=== Installation of package <%= npmCommand.name; %><%}else{%>=== Install dependencies<%}%>
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %><% if(npmCommand.name){ %>=== Installation of package <%= npmCommand.name; %><%}else{%>=== Install dependencies<%}%>
+<%if(text){%><%- text; %><%}%> <%}%>
 
 ==== Prerequisites
 

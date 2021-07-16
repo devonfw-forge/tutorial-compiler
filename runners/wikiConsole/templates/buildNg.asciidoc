@@ -1,8 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Build an Angular project
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Build an Angular project
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Build an Angular project
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Build an Angular Project
-<%if(text){%><%- text; %><%}%><%}%>
 
 ==== Prerequisites
 * You need to have either installed the devonfw-ide with an Angular installation or installed https://angular.io/[Angular] seperatly on your system.

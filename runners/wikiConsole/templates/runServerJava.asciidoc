@@ -1,8 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === Run Java Server
-<%if(text){%><%- text; %><%}%><%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Run Java Server
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Run Java Server
+<%if(text){%><%- text; %><%}%> <%}%>
 
 
 === Prerequisites

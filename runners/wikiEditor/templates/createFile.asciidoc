@@ -1,9 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Create the <%= fileName; %> file
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Create the <%= fileName; %> file
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Create the <%= fileName; %> file
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Create the file <%= fileName; %>
-
-<%if(text){%><%- text; %><%}%><%}%>
 
 ==== Prerequisites
 * Existing folder you want to create the file. (If the folder doesn't exist you can create it from with the editor).

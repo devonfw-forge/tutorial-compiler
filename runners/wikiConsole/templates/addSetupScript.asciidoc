@@ -1,8 +1,10 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
-
+<% if(title){ %>== <%= title;%> 
 === Run a setup script
-<%if(text){%><%- text; %><%}%><%}%>
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Run a setup script
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Run a setup script
+<%if(text){%><%- text; %><%}%> <%}%>
 
 Run a Script to setup the enviroment for the Tutorial.  
 
@@ -39,7 +41,7 @@ A file explorer window opens where you should set the filename to *<%= scriptNam
 . Windows + 
 Open the PowerShell in your current workspace and execute the command `./<%= scriptNameWindows; %>` to run the script.
 . Linux and macOS + 
-Open the Terminal in your current workspace and execute the command `bash <%= scriptNameWindows; %>` to run the script.
+Open the Terminal in your current workspace and execute the command `bash <%= scriptNameLinux; %>` to run the script.
 
 <%if(textAfter){%><%- textAfter; %><%}%>
 

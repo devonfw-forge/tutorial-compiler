@@ -1,8 +1,11 @@
-<%if(title){%>== <%- title; %>
-<%if(text){%><%- text; %><%}%><%}else{%>
+<% if(title){ %>== <%= title;%> 
+=== Install CobiGen
+<%if(text){%><%- text; %> <%}%> 
+<%}else if(title === undefined){%>=== Install CobiGen
+<%if(text){%><%- text; %> <%}%>
+<%}else if(title === null){ %>== Install CobiGen
+<%if(text){%><%- text; %><%}%> <%}%>
 
-=== Install GobiGen
-<%if(text){%><%- text; %><%}%><%}%>
 
 Installing devonfw code generator (i.e. CobiGen).
 
